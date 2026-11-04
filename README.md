@@ -1,13 +1,12 @@
+# AI Engineering Toolkit
 
-# Agentic Engineering Toolkit 🚀
+A lightweight, tool-agnostic **SPEC (Specification-Driven Development)** and governance toolkit for AI-assisted software development. 
 
-A lightweight, tool-agnostic specification and governance toolkit for AI-assisted software development.
-
-This repository provides a standardized structure of **rules**, **skills**, and **prompts** designed to keep LLMs (such as Claude, GPT, or terminal coding agents) strictly aligned with senior engineering standards, clean architecture, and rigorous workflows.
+This repository provides a standardized structure of **rules**, **skills**, and **prompts** designed to keep LLMs (such as Claude, GPT, or terminal coding agents) strictly aligned with senior engineering standards, clean architecture, and rigorous SPEC-driven workflows.
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```text
 .
@@ -77,7 +76,7 @@ The initialization script will:
 
 ---
 
-## 🛡️ Governance & Philosophy
+## Governance & Philosophy
 
 - **Product changes; workflow does not:** Every project adapts to its unique business domain, but the execution lifecycle remains invariant (Kanban backlog → small user stories → test-first → automated gates → documented delivery).
 - **Source of Truth:** The `.agents/` directory versioned in Git governs the assistant's behavior. Local IDE wrappers should always defer to these repository standards.
