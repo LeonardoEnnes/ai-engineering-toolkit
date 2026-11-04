@@ -12,6 +12,8 @@ This directory contains specialized, modular instructions (skills) designed to e
 | [**performance-audit**](./performance-audit/) | Profiles and resolves high-impact performance bottlenecks across frontend rendering, backend concurrency, and database queries. | When fixing slow code, N+1 queries, or heavy re-renders. |
 | [**code-review**](./code-review/) | Acts as a strict Tech Lead conducting uncompromising code reviews focused on SOLID principles, clean code, and testability. | During Pull Request reviews and refactoring phases. |
 | [**tdd-architect**](./tdd-architect/) | Drives feature design and implementation strictly following the Red-Green-Refactor TDD/BDD workflow. | When building new features from scratch with test-first methodology. |
+| [**onboard-dev**](./onboard-dev/) | Rapidly orients new developers or agents by mapping repository architecture and core flows using Mermaid diagrams. | When onboarding to a new codebase or summarizing architecture. |
+| [**write-adr**](./write-adr/) | Guides the creation of formal Architectural Decision Records (ADRs) to document significant design and technology choices. | When establishing major structural decisions or trade-offs. |
 
 ## How to Use
 
