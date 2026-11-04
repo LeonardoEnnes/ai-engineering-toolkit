@@ -1,8 +1,9 @@
+
 # AI Engineering Toolkit
 
-A lightweight, tool-agnostic **SPEC (Specification-Driven Development)** and governance toolkit for AI-assisted software development. 
+A lightweight, tool-agnostic **SPEC (Specification-Driven Development)** and governance toolkit for AI-assisted software development.
 
-This repository provides a standardized structure of **rules**, **skills**, and **prompts** designed to keep LLMs (such as Claude, GPT, or terminal coding agents) strictly aligned with senior engineering standards, clean architecture, and rigorous SPEC-driven workflows.
+This repository provides a standardized structure of **rules**, **skills**, **packs**, and **prompts** designed to keep LLMs (such as Claude, GPT, or terminal coding agents) strictly aligned with senior engineering standards, clean architecture, and rigorous SPEC-driven workflows.
 
 ---
 
@@ -17,7 +18,8 @@ This repository provides a standardized structure of **rules**, **skills**, and 
 │   ├── rules/                 # Non-negotiable global constraints and guardrails
 │   ├── skills/                # Modular expert roles and specialized procedures
 │   └── prompts/               # Reusable bootstrap and execution procedure prompts
-├── packs/                     # Optional, stack-specific extension packs
+├── adapters/                  # Integration adapters and MCP configurations
+├── packs/                     # Optional, stack-specific and functional extension packs
 └── scripts/
     └── init.sh                # Automated bootstrap script for target projects
 ```
@@ -35,6 +37,8 @@ Persistent constraints that govern how AI assistants write and modify code:
 - **`no-silent-refactors`**: Prevents unrequested refactoring, reformatting, or scope creep.
 - **`architecture-boundaries`**: Enforces layer isolation and DTO separation.
 - **`no-hallucination`**: Mandates fact-checking against real codebase patterns and dependencies.
+- **`git-conventions`**: Enforces strict Conventional Commits, branch naming standards, and structured PR descriptions.
+- **`debug-root-cause`**: Enforces methodical root-cause analysis (RCA) and prevents random trial-and-error patching.
 
 ### 2. Expert Skills (`.agents/skills/`)
 
@@ -46,15 +50,19 @@ Modular capabilities loaded on demand:
 - **`generate-docs`**: Production-grade, multi-file documentation generation with Mermaid diagrams.
 - **`grill-me`**: Adversarial interrogation to stress-test architectural ideas and uncover hidden assumptions.
 - **`tdd-architect`**: Guides feature implementation strictly through test-driven development.
+- **`onboard-dev`**: Rapidly orients new developers or agents by mapping repository architecture via Mermaid diagrams.
+- **`write-adr`**: Guides the creation of formal Architectural Decision Records (ADRs) for critical design choices.
 
 ### 3. Optional Packs (`packs/`)
 
-Stack-specific modular skills that can be opted into during project initialization:
+Stack-specific and functional extension packs that can be opted into during project initialization:
 
-- **`spring-boot-expert`**: Enterprise Java & Spring Boot architecture patterns.
+- **`spring-boot-expert`**: Enterprise Java & Spring Boot architecture patterns, transaction boundaries, and Hibernate optimization.
 - **`refactor-react`**: React/Next.js hook composition and re-render optimization.
+- **`humanize-frontend`**: Organic, responsive UI components with polished micro-interactions, accessibility, and defensive design.
+- **`unslop-ai`**: Strips generic AI visual clichés, corporate copywriting filler, and redundant code boilerplate.
+- **`reverse-engineering-expert`**: Deep inspection and analysis of compiled binaries and local applications using the REA (Reverse Engineer Anything) MCP toolkit.
 - **`seo-optimizer`**: Semantic HTML, Core Web Vitals, and WCAG accessibility standards.
-- **`unslop-ai`**: Strips generic AI visual clichés and corporate copywriting filler.
 
 ---
 
@@ -72,7 +80,7 @@ The initialization script will:
 1. Create the standard `.agents/` and `docs/` governance directories.
 2. Inject core rules and prompts.
 3. Place the master **`AGENTS.md`** file at the project root.
-4. Prompt an interactive menu allowing you to select and install optional **stack packs**.
+4. Prompt an interactive menu allowing you to select and install optional **extension packs**.
 
 ---
 
