@@ -1,27 +1,30 @@
 ---
 name: "performance-audit"
-description: "Identifies and fixes performance bottlenecks in the codebase. Invoke when the user asks to improve performance, fix slow code, or optimize rendering/queries."
+description: "Identifies, profiles, and resolves deep performance bottlenecks across frontend, backend, and database layers."
 ---
 
-# Performance Auditor
+# Performance Auditor (Deep Profiler)
 
 <instructions>
-When asked to perform a performance audit, you MUST analyze the code for common bottlenecks and provide optimized solutions:
+When asked to perform a performance audit, you MUST analyze the code for high-impact bottlenecks and provide concrete, production-ready optimized solutions:
 
-1. **Frontend (React/Vite/Next.js):**
-   - Identify unnecessary re-renders. Suggest `React.memo`, `useMemo`, `useCallback`, or moving state down the component tree.
-   - Look for large libraries imported synchronously. Suggest dynamic imports or code-splitting (`React.lazy()`).
-   - Check if images are optimized. Enforce modern image formats and proper lazy loading attributes.
+1. **Frontend (React / Vite / Next.js):**
+   - **Re-renders & State:** Detect unnecessary component re-renders caused by unstable object references or monolithic state placement. Enforce `React.memo`, `useMemo`, `useCallback`, or state lifting/lowering strategies.
+   - **Bundle & Loading:** Spot heavy libraries imported synchronously. Enforce code-splitting, dynamic imports (`React.lazy`), and bundle analyzers.
+   - **Memory Leaks:** Identify uncleaned event listeners, uncleared `setInterval`/`setTimeout`, or subscriptions left open in `useEffect` cleanup hooks.
 
-2. **Backend (Spring Boot / Node.js / Python):**
-   - Identify synchronous/blocking operations in the main thread or event loop.
-   - Look for unoptimized loops (e.g., nested `for` loops that can be solved with Hash maps/Sets).
-   - Check if multiple independent asynchronous operations are being awaited sequentially instead of concurrently (suggest `Promise.all` or parallel execution threads).
+2. **Backend (Spring Boot / Node.js / Python FastAPI):**
+   - **Concurrency & Blocking:** Flag blocking I/O operations running on main threads or event loops. Enforce asynchronous patterns, non-blocking drivers, or thread pool tuning.
+   - **Data Processing:** Identify inefficient O(n²) loops, heavy collection filtering, or missing memory pagination for large datasets (enforce Cursor/Keyset pagination over Offset pagination).
+   - **Parallelization:** Detect independent sequential asynchronous calls that should be executed concurrently (e.g., `Promise.all` or parallel completable futures).
 
-3. **Database & ORM:**
-   - Detect the "N+1 Query Problem" (e.g., fetching a list of entities and making a separate query inside a loop for relations). Suggest JOIN FETCH, EntityGraphs, or batching.
-   - Suggest database indexing for frequently filtered or sorted fields.
+3. **Database & ORM Layer:**
+   - **N+1 Query Resolution:** Detect loops triggering individual queries. Enforce `JOIN FETCH`, `@EntityGraph`, DTO projections, or DataLoader patterns.
+   - **Indexing & Queries:** Flag unindexed foreign keys, full table scans on high-traffic tables, and inefficient wildcard searches (`LIKE '%term%'`).
+   - **Connection Pooling:** Check transaction boundaries and connection leak potentials in connection pools (HikariCP / pg pool).
 
-**Output:**
-Provide a list of detected bottlenecks, explain *why* they are slow, and output the refactored code snippet.
+**Mandatory Output Format:**
+- **Bottleneck Location:** (File, layer, and snippet)
+- **Root Cause Analysis:** (Why this degrades under load or concurrency)
+- **Optimized Code:** (Production-ready refactored snippet)
 </instructions>
