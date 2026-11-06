@@ -26,6 +26,42 @@ This repository provides a standardized structure of **rules**, **skills**, **pa
 
 ---
 
+## 🏛️ Anatomy of the Toolkit (How It Works)
+
+To maintain absolute architectural rigor without bloating the AI's context window, the toolkit divides governance into four distinct layers:
+
+### 1. Rules (`.agents/rules/`)
+
+- **What they are:** Non-negotiable, persistent global guardrails.
+- **Behavior:** Always active. They act as the law, dictating what the AI **never** does (e.g., no hardcoded secrets, mandatory TDD, strict Conventional Commits).
+
+### 2. Skills (`.agents/skills/`)
+
+- **What they are:** Modular expert roles and specialized procedures.
+- **Behavior:** Loaded on demand. The AI consults these only when specific tasks are requested (e.g., code reviews, ADR generation, architecture onboarding).
+
+### 3. Prompts (`.agents/prompts/`)
+
+- **What they are:** Bootstrap templates and execution procedure flows.
+- **Behavior:** Used to jump-start complex multi-step workflows or iterative development loops.
+
+### 4. Packs (`packs/`)
+
+- **What they are:** Opt-in, stack-specific or domain-focused extension bundles (e.g., Spring Boot, React, Reverse Engineering).
+- **Behavior:** Injected via the installation script into `.agents/skills/` to equip the agent with deep technological expertise.
+
+---
+
+### 📌 Note on Native AI Integration
+
+The root `AGENTS.md` acts as the **sovereign bridge**.
+
+When using terminal coding agents (like Claude Code), native utility tools handle the mechanical execution, but they are strictly bound and governed by the standards defined in this toolkit.
+
+#### Coexistence with Native AI Tools:
+
+The governance structure defined in .agents/ and steered by the root AGENTS.md does not conflict with native CLI tools or built-in assistant capabilities (such as Claude Code's internal utilities). Instead, native tools handle the mechanical execution (file parsing, terminal execution, search), while this toolkit acts as the sovereign layer enforcing architectural boundaries, security guardrails, and domain workflows.
+
 ## 🛠️ Core Components
 
 ### 1. Global Rules (`.agents/rules/`)
@@ -61,7 +97,7 @@ Stack-specific and functional extension packs that can be opted into during proj
 - **`refactor-react`**: React/Next.js hook composition and re-render optimization.
 - **`humanize-frontend`**: Organic, responsive UI components with polished micro-interactions, accessibility, and defensive design.
 - **`unslop-ai`**: Strips generic AI visual clichés, corporate copywriting filler, and redundant code boilerplate.
-- **`reverse-engineering-expert`**: Deep inspection and analysis of compiled binaries and local applications using the REA (Reverse Engineer Anything) MCP toolkit.
+
 - **`seo-optimizer`**: Semantic HTML, Core Web Vitals, and WCAG accessibility standards.
 
 ---
