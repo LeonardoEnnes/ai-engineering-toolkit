@@ -18,7 +18,7 @@ This repository provides a standardized structure of **rules**, **skills**, **pa
 │   ├── rules/                 # Non-negotiable global constraints and guardrails
 │   ├── skills/                # Modular expert roles and specialized procedures
 │   └── prompts/               # Reusable bootstrap and execution procedure prompts
-├── adapters/                  # Integration adapters and MCP configurations
+├── adapters/                  # Integration adapters and MCP configurations (There is none in this project yet, you can add your as you see fit)
 ├── packs/                     # Optional, stack-specific and functional extension packs
 └── scripts/
     └── init.sh                # Automated bootstrap script for target projects
