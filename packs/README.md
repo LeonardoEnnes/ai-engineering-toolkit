@@ -24,11 +24,7 @@ Unlike global rules (`.agents/rules/`), packs are **opt-in modules** selected du
 - **Focus:** Code and documentation purification.
 - **Enforces:** Elimination of redundant boilerplate, excessive obvious comments, robotic AI fluff, and over-engineered abstractions.
 
-### 5. `reverse-engineering-expert`
-- **Focus:** Binaries and proprietary application analysis.
-- **Enforces:** Safe offline inspection using the **REA (Reverse Engineer Anything)** MCP toolkit[cite: 1], evidence-based pseudo-code extraction, and strict cloning boundaries.
-
-### 6. `seo-optimizer`
+### 5. `seo-optimizer`
 - **Focus:** Web visibility and compliance.
 - **Enforces:** Semantic HTML, Core Web Vitals performance optimization, and WCAG accessibility compliance.
 
